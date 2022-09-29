@@ -1,24 +1,16 @@
-const tasks = [
-  {
-    description: 'Sample task 1',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Sample task 2',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Sample task 3',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Sample task 4',
-    completed: false,
-    index: 3,
-  },
-];
+import NewTaskTemplate from "./task-template.js";
+import dynamicStorageUpdate from "./dynamic-storage-update.js";
+import reOrderTasks from "./re-order-tasks.js";
+import displayNode from "./display-task-node.js";
+
+const tasks = JSON.parse(localStorage.getItem("taskStorageArray")) || [];
+
+export const populateTaskArray = (describe) => {
+  const newTaskObject = new NewTaskTemplate(describe);
+  tasks.push(newTaskObject);
+  displayNode(newTaskObject);
+  reOrderTasks(tasks);
+  dynamicStorageUpdate(tasks);
+};
 
 export default tasks;
