@@ -15,7 +15,7 @@
 
 ### [See the project live](https://amon-cofie.github.io/To-Do-List/)
 
-## Getting Started
+## Get Started
 
 This project is high-fidelity wireframe of a to do list web app. You can open the live link to view it or you can make a copy to personalize it.
 To get a local copy up and running follow these simple example steps:
