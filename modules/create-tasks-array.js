@@ -1,24 +1,17 @@
-const tasks = [
-  {
-    description: 'Sample task 1',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Sample task 2',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Sample task 3',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Sample task 4',
-    completed: false,
-    index: 3,
-  },
-];
+import NewTaskTemplate from './task-template.js';
+import dynamicStorageUpdate from './dynamic-storage-update.js';
+import reOrderTasks from './re-order-tasks.js';
+import displayNode from './display-task-node.js';
+import tasks from './tasks-array-module.js';
 
-export default tasks;
+export const populateTaskArray = (describe) => {
+  dynamicStorageUpdate(tasks);
+  const newTaskObject = new NewTaskTemplate(describe);
+  tasks.push(newTaskObject);
+  reOrderTasks(tasks);
+  displayNode(newTaskObject);
+  // console.log("working");
+  dynamicStorageUpdate(tasks);
+};
+
+export default populateTaskArray;

@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: cursive;
 }
 
 .to-do-list-app-container {
@@ -41,4 +42,7 @@
 
 .description {
   margin-left: 1rem;
+  max-width: 40%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }

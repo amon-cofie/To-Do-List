@@ -1,8 +1,29 @@
 import './style.css';
-import tasks from '../modules/create-tasks-array.js';
-import taskNode from '../modules/create-task-node.js';
+import tasks from '../modules/tasks-array-module.js';
+import { populateTaskArray } from '../modules/create-tasks-array.js';
+import displayNode, { toDoList } from '../modules/display-task-node.js';
 
-taskNode(tasks);
+const taskInput = document.querySelector('#add-new-task');
+const resetBtn = document.querySelector('#reset-button');
 
-// newTask.dataset.elementId = e.index;
-// newtask.dataset.completed = true;
+tasks.forEach((e) => {
+  displayNode(e);
+});
+
+taskInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    if (taskInput.value.length <= 1) {
+      return;
+    }
+    populateTaskArray(taskInput.value);
+    taskInput.value = '';
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  localStorage.clear();
+  tasks.splice(tasks[0]);
+  while (toDoList.firstChild) {
+    toDoList.removeChild(toDoList.lastChild);
+  }
+});
