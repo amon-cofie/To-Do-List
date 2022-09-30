@@ -1,16 +1,17 @@
-import NewTaskTemplate from "./task-template.js";
-import dynamicStorageUpdate from "./dynamic-storage-update.js";
-import reOrderTasks from "./re-order-tasks.js";
-import displayNode from "./display-task-node.js";
-
-const tasks = JSON.parse(localStorage.getItem("taskStorageArray")) || [];
+import NewTaskTemplate from './task-template.js';
+import dynamicStorageUpdate from './dynamic-storage-update.js';
+import reOrderTasks from './re-order-tasks.js';
+import displayNode from './display-task-node.js';
+import tasks from './tasks-array-module.js';
 
 export const populateTaskArray = (describe) => {
+  dynamicStorageUpdate(tasks);
   const newTaskObject = new NewTaskTemplate(describe);
   tasks.push(newTaskObject);
-  displayNode(newTaskObject);
   reOrderTasks(tasks);
+  displayNode(newTaskObject);
+  // console.log("working");
   dynamicStorageUpdate(tasks);
 };
 
-export default tasks;
+export default populateTaskArray;

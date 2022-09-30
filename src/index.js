@@ -1,32 +1,30 @@
-import "./style.css";
-import tasks, { populateTaskArray } from "../modules/create-tasks-array.js";
-import displayNode from "../modules/display-task-node.js";
-import { toDoList } from "../modules/display-task-node.js";
+import './style.css';
+import tasks from '../modules/tasks-array-module.js';
+import { populateTaskArray } from '../modules/create-tasks-array.js';
+import displayNode, { toDoList } from '../modules/display-task-node.js';
 
-const taskInput = document.querySelector("#add-new-task");
-const resetBtn = document.querySelector("#reset-button");
+const taskInput = document.querySelector('#add-new-task');
+const resetBtn = document.querySelector('#reset-button');
 
 tasks.forEach((e) => {
   displayNode(e);
 });
 
-console.log("this point works");
-
-taskInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+taskInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
     if (taskInput.value.length <= 1) {
-      alert(
-        `I don't think a whole task can be one letter or less in length 😅`
-      );
       return;
     }
     populateTaskArray(taskInput.value);
-    taskInput.value = "";
+    taskInput.value = '';
   }
 });
 
-resetBtn.addEventListener("click", () => {
+resetBtn.addEventListener('click', () => {
   localStorage.clear();
+  tasks.splice(tasks[0]);
+
+  console.log(tasks);
   while (toDoList.firstChild) {
     toDoList.removeChild(toDoList.lastChild);
   }
