@@ -1,4 +1,5 @@
 import removeNode from './remove-task-node.js';
+import editTask from './edit-existing-task.js';
 
 const taskNode = (obj) => {
   const newTask = document.createElement('div');
@@ -22,8 +23,14 @@ const taskNode = (obj) => {
   newTask.dataset.index = obj.index;
   newTask.dataset.completed = obj.completed;
   newTask.classList.add('make-flex');
+  // console.log(newTask);
+
   taskController.addEventListener('click', () => {
     removeNode(obj.index, newTask);
+  });
+
+  objDescription.addEventListener('click', () => {
+    editTask(objDescription, newTask.dataset.index);
   });
 
   return newTask;

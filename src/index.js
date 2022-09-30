@@ -23,8 +23,6 @@ taskInput.addEventListener('keydown', (event) => {
 resetBtn.addEventListener('click', () => {
   localStorage.clear();
   tasks.splice(tasks[0]);
-
-  console.log(tasks);
   while (toDoList.firstChild) {
     toDoList.removeChild(toDoList.lastChild);
   }
