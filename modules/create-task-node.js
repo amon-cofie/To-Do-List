@@ -1,5 +1,6 @@
 import removeNode from './remove-task-node.js';
 import editTask from './edit-existing-task.js';
+import checkCompleted from './check-completed.js';
 
 const taskNode = (obj) => {
   const newTask = document.createElement('div');
@@ -11,8 +12,22 @@ const taskNode = (obj) => {
 
   checkMarkInput.type = 'checkbox';
   objDescription.innerText = `${obj.description}`;
-  taskController.classList.add('fa-solid', 'fa-ellipsis-vertical');
+  taskController.classList.add(
+    'fa-solid',
+    'fa-ellipsis-vertical',
+    'make-task-controller-accessible',
+  );
   objDescription.classList.add('description');
+
+  taskController.onmouseover = () => {
+    taskController.classList.remove('fa-solid', 'fa-ellipsis-vertical');
+    taskController.classList.add('fa-solid', 'fa-trash');
+  };
+
+  taskController.onmouseout = () => {
+    taskController.classList.remove('fa-solid', 'fa-trash');
+    taskController.classList.add('fa-solid', 'fa-ellipsis-vertical');
+  };
 
   newTaskContainer.appendChild(checkMarkInput);
   newTaskContainer.appendChild(objDescription);
@@ -23,7 +38,6 @@ const taskNode = (obj) => {
   newTask.dataset.index = obj.index;
   newTask.dataset.completed = obj.completed;
   newTask.classList.add('make-flex');
-  // console.log(newTask);
 
   taskController.addEventListener('click', () => {
     removeNode(obj.index, newTask);
@@ -32,6 +46,15 @@ const taskNode = (obj) => {
   objDescription.addEventListener('click', () => {
     editTask(objDescription, newTask.dataset.index);
   });
+
+  checkMarkInput.addEventListener('change', () => {
+    checkCompleted(newTask);
+  });
+
+  if (obj.completed) {
+    checkMarkInput.checked = true;
+    objDescription.classList.add('cross-out');
+  }
 
   return newTask;
 };

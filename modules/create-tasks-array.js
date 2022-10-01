@@ -10,7 +10,6 @@ export const populateTaskArray = (describe) => {
   tasks.push(newTaskObject);
   reOrderTasks(tasks);
   displayNode(newTaskObject);
-  // console.log("working");
   dynamicStorageUpdate(tasks);
 };
 

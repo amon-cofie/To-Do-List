@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: cursive;
+  transition: 0.5s;
 }
 
 .to-do-list-app-container {
@@ -45,4 +46,34 @@
   max-width: 40%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.cross-out {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.make-task-controller-accessible {
+  width: 2rem;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#clear-all-completed {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(128, 128, 128, 0.521);
+}
+
+#clr-completed-btn {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(128, 128, 128, 0);
+  border: none;
+  padding: 0.5rem;
+  font-weight: 550;
 }
